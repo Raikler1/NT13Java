@@ -1,24 +1,20 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 
-public class MailService<T> implements Consumer<Object> {
-    private List<MailMessage> messages = new ArrayList<>();
-    private List<Salary> salary = new ArrayList<>();
+public class MailService<T> implements Consumer<Mailable<T>> {
+    private Map<String, List<T>> result = new HashMap<String, List<T>>(){
+        @Override
+        public List<T> get(Object key) {
+            return super.getOrDefault(key, new LinkedList<T>());
+        }
+    };
 
 
     @Override
-    public void accept(Object o) {
-        if(o instanceof MailMessage){
-            messages.add((MailMessage) o);
-        }
-        if(o instanceof Salary){
-            salary.add((Salary) o);
-        }
+    public void accept(Mailable<T> mailbl) {
+        result.put(mailbl.getTo(), Arrays.asList(mailbl.getContent()));
     }
 
     @Override
@@ -26,7 +22,6 @@ public class MailService<T> implements Consumer<Object> {
         return null;
     }
     public Map<String, List<T>> getMailBox() {
-        Map<String, List<T>> result = new HashMap<>();
         return result;
         }
 }

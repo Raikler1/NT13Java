@@ -1,25 +1,25 @@
 package com.company;
 
-public class Salary {
-    public String fromWho;
-    public String toWho;
-    public int howMuch;
+public class Salary implements Mailable<Integer> {
+    private String from;
+    private String to;
+    private int content;
 
     public Salary(String fromWho, String toWho, int howMuch) {
-        this.fromWho = fromWho;
-        this.toWho = toWho;
-        this.howMuch = howMuch;
+        this.from = fromWho;
+        this.to = toWho;
+        this.content = howMuch;
     }
 
     public String getFrom() {
-        return fromWho;
+        return from;
     }
 
     public String getTo() {
-        return toWho;
+        return to;
     }
 
-    public int getHow() {
-        return howMuch;
+    public Integer getContent() {
+        return content;
     }
 }

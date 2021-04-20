@@ -1,6 +1,6 @@
 package com.company;
 
-public class MailMessage {
+public class MailMessage implements Mailable<String>{
     private String from;
     private String to;
     private String content;

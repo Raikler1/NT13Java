@@ -62,24 +62,6 @@ public class Main {
 
         assert mailBox.get(randomTo).equals(Collections.<String>emptyList()): "wrong mailService mailbox content (3)";
 
-        if (!mailBox.get("H.P. Lovecraft").equals(
-                Arrays.asList(
-                        "This \"The Shadow over Innsmouth\" story is real masterpiece, Howard!"
-                )
-        )) {
-            System.out.println("wrong mailService mailbox content (1)");}
-
-        if (!mailBox.get("Christopher Nolan").equals(
-                Arrays.asList(
-                        "Брат, почему все так хвалят только тебя, когда практически все сценарии написал я. Так не честно!",
-                        "Я так и не понял Интерстеллар."
-                )
-        )){
-            System.out.println("wrong mailService mailbox content (2)");}
-
-        if (mailBox.get(randomTo).equals(Collections.<String>emptyList())){
-            System.out.println("wrong mailService mailbox content (3)");}
-
         // Создание списка из трех зарплат.
         Salary salary1 = new Salary("Facebook", "Mark Zuckerberg", 1);
         Salary salary2 = new Salary("FC Barcelona", "Lionel Messi", Integer.MAX_VALUE);
