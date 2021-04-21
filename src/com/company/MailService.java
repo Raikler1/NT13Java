@@ -11,10 +11,14 @@ public class MailService<T> implements Consumer<Mailable<T>> {
         }
     };
 
-
     @Override
     public void accept(Mailable<T> mailbl) {
-        result.put(mailbl.getTo(), Arrays.asList(mailbl.getContent()));
+        if (result.containsKey(mailbl.getTo())){
+            List <T> value = result.get(mailbl.getTo());
+            value.add(mailbl.getContent());
+        } else {
+        result.put(mailbl.getTo(), new ArrayList<T>(Arrays.asList(mailbl.getContent())));
+        }
     }
 
     @Override
